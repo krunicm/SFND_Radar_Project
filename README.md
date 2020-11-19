@@ -22,9 +22,9 @@ Project goals are:
 ---  
 
 ## Project Specification
-```
-Sections from the project rubric.
-```
+
+Sections from the project rubric. 
+
 ---
 ### FMCW Waveform Design
 **Criteria**: Using the given system requirements, design a FMCW waveform. Find its Bandwidth (B), chirp time (Tchirp) and slope of the chirp. \
@@ -44,7 +44,7 @@ slope = B/Tchirp;
 ---
 ### Simulation Loop
 **Criteria**: Simulate Target movement and calculate the beat or mixed signal for every timestamp. \
-**Specification**: A beat signal should be generated such that once range FFT implemented, it gives the correct range i.e the initial position of target assigned with an error margin of +/- 10 meters. \
+**Specification**: A beat signal should be generated such that once range FFT implemented, it gives the correct range i.e the initial position of target assigned with an error margin of +/- 10 meters. 
 ```
 for i=1:length(t)         
 
@@ -101,9 +101,10 @@ plot(fft1_sig);
 ```
 <img src="img/fft1.png" width="779" height="414" />
 ---
+
 ### 2D CFAR
 **Criteria**: Implement the 2D CFAR process on the output of 2D FFT operation, i.e the Range Doppler Map. \
-**Specification**: The 2D CFAR processing should be able to suppress the noise and separate the target signal. The output should match the image shared in walkthrough. \
+**Specification**: The 2D CFAR processing should be able to suppress the noise and separate the target signal. The output should match the image shared in walkthrough. 
 
 2DFFT ploting \
 <img src="img/fft2.png" width="779" height="414" /> 
