@@ -195,9 +195,9 @@ for i = Tr+Gr+1:(Nr/2 - (Tr+Gr))
             for q = j-(Td+Gd):j+Td+Gd
                 if (abs(i-p)>Gr || abs(j-q)>Gd)
                     noise_level=noise_level + db2pow(RDM(p,q));
-                end;
-            end;
-        end;
+                end
+            end
+        end
         
         threshold = pow2db(noise_level/(2*(Tr+Gr+1)*2*(Tr+Gr+1)-(Gr*Gd)-1));
         threshold = threshold + offset;

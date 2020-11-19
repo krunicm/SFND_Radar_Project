@@ -105,15 +105,48 @@ plot(fft1_sig);
 **Criteria**: Implement the 2D CFAR process on the output of 2D FFT operation, i.e the Range Doppler Map. \
 **Specification**: The 2D CFAR processing should be able to suppress the noise and separate the target signal. The output should match the image shared in walkthrough. \
 
----
-## Brief explanations
----
-### Implementation steps for the 2D CFAR process.
+2DFFT ploting \
+<img src="img/fft2.png" width="779" height="414" /> 
+
+
+Steps taken to suppress the non-thresholded cells at the edges.
+```
+RDM(union(1:(Tr+Gr), end-(Tr+Gr):end),:) = 0;
+RDM(:,union((1:Td+Gd), end-(Td+Gd-1):end)) = 0;
+```
+
+Implementation and ploting of 2D CFAR processing.
+```
+% 2. Slide window across the signal length
+for i = Tr+Gr+1:(Nr/2 - (Tr+Gr))   
+    for j = Td+Gd+1:(Nd - (Gd+Td))
+
+        % 2. - 5. Determine the noise threshold by measuring it within the training cells
+        noise_level = zeros(1, 1);
+
+        for p = i-(Tr+Gr):i+Tr+Gr
+            for q = j-(Td+Gd):j+Td+Gd
+                if (abs(i-p)>Gr || abs(j-q)>Gd)
+                    noise_level=noise_level + db2pow(RDM(p,q));
+                end
+            end
+        end
+        
+        threshold = pow2db(noise_level/(2*(Tr+Gr+1)*2*(Tr+Gr+1)-(Gr*Gd)-1));
+        threshold = threshold + offset;
+        
+        CUT=RDM(i,j);
+        if (CUT<threshold)
+            RDM(i,j)=0;
+        else
+            RDM(i,j)=1;
+        end
+    end
+end
+
+```
+<img src="img/finall.png" width="779" height="414" />
 
 ---
-### Selection of Training, Guard cells and offset.
-
----
-### Steps taken to suppress the non-thresholded cells at the edges.
 
 
