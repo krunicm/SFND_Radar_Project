@@ -7,18 +7,14 @@ Project goals are:
  * For the same simulation loop process the transmit and receive signal to determine the beat signal
  * Perform Range FFT on the received signal to determine the Range
  * Towards the end, perform the CFAR processing on the output of 2nd FFT to display the target.
- ```
-
- ```
+ 
 ---
 
 ## Project Layout
 
 <img src="img/project_layout.png" width="779" height="414" />
 
-```
 
-```
 ---  
 
 ## Project Specification
@@ -71,7 +67,7 @@ end
 ### Range FFT (1st FFT)
 **Criteria**: Implement the Range FFT on the Beat or Mixed Signal and plot the result. \
 **Specification**: A correct implementation should generate a peak at the correct range, i.e the
-initial position of target assigned with an error margin of +/- 10 meters. \
+initial position of target assigned with an error margin of +/- 10 meters. 
 
 Implementation and ploting the resulting signal.
 ```
